@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen overflow-x-hidden bg-paper text-charcoal font-sans antialiased;
+}
+
+#root {
+  @apply min-h-screen;
+}
+
+/* Reserve space for the fixed mobile bottom navigation (see BottomNav.jsx)
+   so page content never gets hidden behind it. Matches the bottom nav's
+   `md:hidden` breakpoint. */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom));
+  }
+}
+
+main {
+  @apply w-full;
+}
+
+::selection {
+  background: #d9a22755;
+}
+
+/* Focus visibility for accessibility */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #d9a227;
+  outline-offset: 2px;
+}
+
+.ledger-table th {
+  @apply text-left text-[11px] uppercase tracking-wider text-charcoal/50 font-sans font-semibold py-3 px-4;
+}
+
+.ledger-table td {
+  @apply py-3 px-4 border-t border-sand/70 text-sm;
+}
+
+@media (max-width: 640px) {
+  .ledger-table th,
+  .ledger-table td {
+    @apply px-3 py-2.5 text-xs;
+  }
+}
+
+.ledger-table tr:hover td {
+  @apply bg-sandlight/60;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="tel"],
+select,
+textarea {
+  @apply w-full rounded-md border border-sand bg-white px-3 py-2 text-sm text-charcoal placeholder:text-charcoal/35 focus:border-brass focus:ring-1 focus:ring-brass transition-colors;
+}
+
+label {
+  @apply block text-xs uppercase tracking-wide text-charcoal/55 font-semibold mb-1.5;
+}
